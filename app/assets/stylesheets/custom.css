@@ -1,0 +1,39 @@
+body {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    margin: 4px;
+}
+
+
+input[type='file'] {
+    background-color: #7c7c7c;
+    border-radius: 5px;
+    color: #fff;
+    margin: 10px;
+    padding: 12px 28px;
+    cursor: pointer;
+}
+
+.result_span {
+    padding: 4px 7px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+}
+
+.valid {    
+    color: #389e0d;
+    background: #f6ffed;
+    border-color: #b7eb8f;
+    
+    /* border: 1px solid #b7eb8f;*/
+}
+
+.invalid {        
+    color: #cf1322;
+    background: #fff1f0;
+    border-color: #ffa39e;    
+}

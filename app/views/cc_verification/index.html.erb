@@ -1,0 +1,30 @@
+<div class="container" style="margin-top: 60px">
+    <%= form_with model: @cc_verification do |form| %>        
+        <%= form.file_field :cards_file %>
+        <%= form.submit %>        
+        <%= link_to "Delete All", :controller => :cc_verification, :action => :delete %>
+    <% end %>
+
+    <% if @results.count > 0 %>
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Credit Card</th>
+                    <th>Is Valid?</th>
+                    <th>Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @results.each do |r| %>
+                    <tr>
+                        <td><%= r.creditcard %></td>
+                        <td><span class="result_span <%= r.result == 't' ? 'valid' : 'invalid' %>"><%= r.result == 't' ? 'Valid' : 'Invalid' %><span></td>
+                        <td><em style="color: #cf1322"><%= r.explanation %></em></td>
+                    </tr>
+                <% end %>    
+            </tbody>
+        </table>
+    <% else %>
+        <p><em>No results to show</em></p>
+    <% end %>
+</div>

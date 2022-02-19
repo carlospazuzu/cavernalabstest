@@ -1,0 +1,2 @@
+class Ccresult < ApplicationRecord
+end
