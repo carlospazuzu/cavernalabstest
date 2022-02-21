@@ -1,7 +1,7 @@
 class CcVerificationController < ApplicationController
 
     def index
-        @results = Ccresult.all        
+        @results = Ccresult.all
     end
 
     def new
@@ -9,12 +9,11 @@ class CcVerificationController < ApplicationController
     end
 
     # TO DO    
-    # make button to save results as txt file    
     # work on unit tests stuff
 
     def create
         # clean screen from previous verification
-        Ccresult.delete_all        
+        Ccresult.delete_all                
 
         uploaded_file = params[:cards_file]
         # if user didn't send any file at all, abort
@@ -38,6 +37,18 @@ class CcVerificationController < ApplicationController
 
         end
         redirect_to action: 'index'
+    end
+
+    def download
+        @all = Ccresult.all
+        result = ''
+        @all.each do |row|
+            result += row.result == 't' ? 'Valid' : 'Invalid'
+            result += '<br />'
+        end
+
+        # send_data result, :filename => 'result.txt'     
+        render inline: result   
     end
 
     def delete        

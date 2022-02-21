@@ -48,12 +48,12 @@ module Services
             # verification V - must NOT have 4 or more consecutive repeated digits.
             is_first = true
             previous_digit = ''
-            repetition_counter = 0
+            repetition_counter = 1
 
             card_number.split('').each do |d|
                 if is_first
                     previous_digit = d
-                    repetition_counter += 1
+                    repetition_counter = 1
                     is_first = false
                     next
                 end
@@ -61,9 +61,10 @@ module Services
                 if d == previous_digit
                     repetition_counter += 1
                 else
-                    repetition_counter = 0
-                    is_first = true
+                    repetition_counter = 1                    
                 end
+
+                previous_digit = d
 
                 if repetition_counter >= 4
                     return false, 'Has 4 or more consecutive repeated digits'

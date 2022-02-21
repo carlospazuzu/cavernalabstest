@@ -23,7 +23,9 @@
                     </tr>
                 <% end %>    
             </tbody>
-        </table>
+        </table>        
+        <%= link_to "See result as plain text", :controller => :cc_verification, :action => :download %>
+        <br />
     <% else %>
         <p><em>No results to show</em></p>
     <% end %>
